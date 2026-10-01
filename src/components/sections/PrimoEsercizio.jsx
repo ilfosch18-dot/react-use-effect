@@ -14,12 +14,18 @@ const [text, setText] = useState(() => {
 // FUNZIONE DI RESET, USO setText PERCHE' E' LA FUNZIONE CHE PERMETTE A TEXT DI MUTARE
 function resetText(){
     setText('');
+    // SENZA QUESTO PEZZO NON RIMUOVO NIENTE DA LOCAL STORAGE MA SOLO DAL TESTO
+    localStorage.removeItem('text-count');
+
 }
 
 // useEffect PERCHE' L'ESERCIZIO CHIEDE UN LOCAL STORAGE 
 useEffect(() => {
     console.log('Salvataggio dati con local storage');
-
+    // QUESTA CONDIZIONE SERVE IN MODO DA SALVARERE NEL LOCAL STORAGE text SOLO QUANDO NON E' VUOTO
+  if (text !== '') {
+    localStorage.setItem('text-count', JSON.stringify(text));
+  }
     // LOCAL STORAGE, SI USA PER SALVARE IL VALORE DI text SOTTO LA CHIAVE 'text-count' (nome arbitrario, poteva essere qualsiasi cosa purchè parlante)
     localStorage.setItem('text-count', JSON.stringify(text));
     // CONTEGGIO DEI CARATTERI NELLA TAB DEL BROWSER, ANCHE PER QUESTO MOTIVO SERVE useEffect, PERCHE' BISGONA ACCEDERE A QUESTO ELEMENTO DEL DOM!
