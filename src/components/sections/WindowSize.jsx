@@ -13,6 +13,22 @@ function handleHeight(){
     setHeight(window.innerHeight);
 }
 
+useEffect(() => {
+// ESEGUO FUZNIONE HANDLEWIDTH QUANDO SI RIDIMENSIONA LA FINESTRA
+window.addEventListener('resize', handleWidth);
+// ESEGUO FUZNIONE HANDLEHEIGHT QUANDO SI RIDIMENSIONA LA FINESTRA
+window.addEventListener('resize', handleHeight);
+},[])
+
+let breakpoint;
+
+if (width < 768) {
+  breakpoint = "Mobile";
+} else if (width < 992) {
+  breakpoint = "Tablet";
+} else {
+  breakpoint = "Desktop";
+}
 
   return (
 <main className="my-5 main-content">
@@ -33,6 +49,11 @@ function handleHeight(){
         <p><strong>La larghezza della pagina è: </strong><span className="fw-bold text-success">{width}</span></p>
         <p><strong>L'altezza della pagina è: </strong><span className="fw-bold text-success">{height}</span></p>
       </div>
+      <div className="container text-center">
+        <span className="badge text-bg-primary fs-5">
+            Badge che mostra la dimensione corrente: {breakpoint} — {width} × {height}px
+        </span>
+        </div>
       </main>
     )
 }
