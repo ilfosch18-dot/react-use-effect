@@ -18,7 +18,14 @@ useEffect(() => {
 window.addEventListener('resize', handleWidth);
 // ESEGUO FUZNIONE HANDLEHEIGHT QUANDO SI RIDIMENSIONA LA FINESTRA
 window.addEventListener('resize', handleHeight);
-},[])
+// CLEANUP
+return () => {
+// Quando il componente viene smontato, rimuovo il listener della larghezza
+window.removeEventListener("resize", handleWidth);
+//Rimuovo il listener dell'altezza
+window.removeEventListener("resize", handleHeight);
+  };
+}, []);
 
 let breakpoint;
 
