@@ -1,6 +1,7 @@
 import { useState } from "react";
-import PrimoEsericizio  from "../sections/PrimoEsercizio";
-import SecondoEsercizio from "../sections/SecondoEsercizio";
+/* import PrimoEsericizio  from "../sections/PrimoEsercizio";
+import SecondoEsercizio from "../sections/SecondoEsercizio"; */
+import WindowSize from "../sections/WindowSize";
 
 export default function MainContent() {
 
@@ -8,13 +9,14 @@ export default function MainContent() {
 
   return (
     <main className="text-center">
-        <PrimoEsericizio />
+{/*         <PrimoEsericizio />
         <hr className="border border-black border-3 opacity-75"></hr>
       <button className="mt-5 btn btn-success" onClick={() => setShowTheme(!showTheme)}>
         Mostra/Nascondi tema
       </button>
 
-      {showTheme && <SecondoEsercizio />}
+      {showTheme && <SecondoEsercizio />} */}
+      <WindowSize />
     </main>
   );
 }
